@@ -20,6 +20,7 @@ spring:
       time-between-eviction-runs-millis: 600000
       pool-name: ragendbHikariPool
       leak-detection-threshold: 2000
+
   main:
     allow-circular-references: true
     allow-bean-definition-overriding: true

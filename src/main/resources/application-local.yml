@@ -7,7 +7,7 @@ spring:
   datasource:
         hikari:
           driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy
-          jdbc-url: jdbc:log4jdbc:mysql://localhost:3306/PJDB?autoReconnect=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
+          jdbc-url: jdbc:log4jdbc:mysql://mariapark.synology.me:5394/PJDB?autoReconnect=true&useSSL=false&characterEncoding=UTF-8&serverTimezone=UTC
           username: ragendb
           password: '@Regendb!0918'
           connection-timeout: 3000
