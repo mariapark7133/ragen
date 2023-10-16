@@ -5,12 +5,11 @@ module.exports = (app) => {
         createProxyMiddleware(
             ["/ws-stomp","/sub"],
             {
-                //REACT_APP_API_URL=172.16.0.33:80
-                target: `http://localhost:8080`,
+                target: `http://mariapark.synology.me:5392`,
                 ws: true,
                 router: {
-                    "/ws-stomp": `ws://localhost:8080`,
-                    "/sub": `ws://localhost:8080`,
+                    "/ws-stomp": `ws://mariapark.synology.me:5392`,
+                    "/sub": `ws://mariapark.synology.me:5392`,
                 },
             }
         )
