@@ -5,10 +5,9 @@ const Test = () => {
     const [data, setData] = useState([]);
 
     useEffect(() => {
-        fetchData();
     }, []); // The empty dependency array ensures this runs once after the initial render.
 
-    const fetchData = async () => {
+    const getExampleList = async () => {
         try {
             const response = await axios.post('/example/getExampleList');
             if (response.data.status === 'SUCCESS') {
@@ -23,24 +22,27 @@ const Test = () => {
     }
 
     return (
-        <table style={{ border: '1px solid black' }}>
-            <thead>
-            <tr>
-                <th>SEQ</th>
-                <th>제목</th>
-                <th>내용</th>
-            </tr>
-            </thead>
-            <tbody>
-            {data.map(({ seq, title, contents }) => (
-                <tr key={seq}>
-                    <td>{seq}</td>
-                    <td>{title}</td>
-                    <td>{contents}</td>
+        <div>
+            <button value={'조회'} onClick={getExampleList}>조 회</button>
+            <table style={{ border: '1px solid black' }}>
+                <thead>
+                <tr>
+                    <th>SEQ</th>
+                    <th>제목</th>
+                    <th>내용</th>
                 </tr>
-            ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                {data.map(({ seq, title, contents }) => (
+                    <tr key={seq}>
+                        <td>{seq}</td>
+                        <td>{title}</td>
+                        <td>{contents}</td>
+                    </tr>
+                ))}
+                </tbody>
+            </table>
+        </div>
     )
 }
 
