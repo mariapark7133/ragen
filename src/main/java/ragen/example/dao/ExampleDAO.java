@@ -3,8 +3,11 @@ package ragen.example.dao;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.stereotype.Repository;
 import ragen.example.dto.ExampleDTO;
+import ragen.example.dto.QueryReqDTO;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class ExampleDAO {
@@ -18,5 +21,9 @@ public class ExampleDAO {
 
     public List<ExampleDTO> selectTestInfoList(ExampleDTO reqDTO) {
         return sqlSessionTemplate.selectList(NAMESPACE + "selectTestInfoList", reqDTO);
+    }
+
+    public List<HashMap<String, Object>> selectQueryList(HashMap<String, Object> param) {
+        return sqlSessionTemplate.selectList(NAMESPACE + "selectQueryList", param);
     }
 }

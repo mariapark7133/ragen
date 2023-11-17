@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import './Test.css';
+import styles from './Test.css';
 const Test = () => {
     const [data, setData] = useState([]);
+    const [title, setTitle] = useState('');
+    const [contents, setContents] = useState('');
 
     useEffect(() => {
     }, []); // The empty dependency array ensures this runs once after the initial render.
@@ -21,9 +23,27 @@ const Test = () => {
         }
     }
 
+    const onChangeTitle = (e) =>{
+        setTitle(e.target.value);
+    }
+    const onChangeContents = (e) =>{
+        setContents(e.target.value);
+    }
+
     return (
         <div>
+            <div className={styles['dust-class']}>
+                <label htmlFor="title"><span>* </span>제목</label>
+                <input type="text" className={styles['dust-class']} value={title} id='title' onChange={onChangeTitle} />
+            </div>
+            <div className={styles['dust-class']}>
+                <label htmlFor="contents"><span>* </span>내용</label>
+                <input type="text" className={styles['dust-class']} value={contents} id='contents' onChange={onChangeContents} />
+            </div>
+
+
             <button value={'조회'} onClick={getExampleList}>조 회</button>
+
             <table style={{ border: '1px solid black' }}>
                 <thead>
                 <tr>
