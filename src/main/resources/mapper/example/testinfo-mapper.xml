@@ -10,7 +10,7 @@
         FROM TEST_INFO
     </select>
 
-    <select id="selectQueryList" resultType="HashMap" parameterType="HashMap">
+    <select id="selectQueryList" resultType="java.util.LinkedHashMap" parameterType="HashMap">
         ${query}
     </select>
 </mapper>

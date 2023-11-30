@@ -6,6 +6,7 @@ import ragen.example.dto.ExampleDTO;
 import ragen.example.dto.QueryReqDTO;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,7 +24,7 @@ public class ExampleDAO {
         return sqlSessionTemplate.selectList(NAMESPACE + "selectTestInfoList", reqDTO);
     }
 
-    public List<HashMap<String, Object>> selectQueryList(HashMap<String, Object> param) {
+    public List<LinkedHashMap<String, Object>> selectQueryList(HashMap<String, Object> param) {
         return sqlSessionTemplate.selectList(NAMESPACE + "selectQueryList", param);
     }
 }

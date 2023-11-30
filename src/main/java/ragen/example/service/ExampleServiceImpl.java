@@ -8,6 +8,7 @@ import ragen.example.dto.QueryReqDTO;
 import ragen.example.dto.QueryResDTO;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class ExampleServiceImpl implements ExampleService{
         return exampleDAO.selectTestInfoList(reqDTO);
     }
 
-    public List<HashMap<String, Object>>  getQueryList(HashMap<String, Object> param){
+    public List<LinkedHashMap<String, Object>>  getQueryList(HashMap<String, Object> param){
         return exampleDAO.selectQueryList(param);
     }
 }

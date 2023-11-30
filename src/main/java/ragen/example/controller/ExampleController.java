@@ -46,7 +46,7 @@ public class ExampleController extends BaseController {
     public ResponseDTO getQueryList(@RequestBody HashMap<String, Object> param) {
 
         LinkedHashMap<String, Object> resMap = new LinkedHashMap<>();
-        List<HashMap<String, Object>> resultMap  = exampleService.getQueryList(param);
+        List<LinkedHashMap<String, Object>> resultMap  = exampleService.getQueryList(param);
 
         resMap.put("queryList",resultMap);
 
