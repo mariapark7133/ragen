@@ -51,7 +51,7 @@ server:
     login: drmadmin
     password: password1
   redis:
-    host: 172.16.0.33
+    host: mariapark.synology.me
     port: 6379
     channel: redisroom
   electron-dist:
