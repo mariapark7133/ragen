@@ -10,6 +10,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class GlobalExceptionHandler {
     @ExceptionHandler(SizeLimitExceededException.class)
     public ResponseDTO handleSizeLimitExceededException(SizeLimitExceededException e) {
-        return ResponseUtil.ERROR(ResponseCode.FILE_SIZE_EXCEED_THE_MAXIMUM_LIMIT);
+        return ResponseUtil.ERROR("FAIL.FILESIZE.MAXIMUM.LIMIT",null);
     }
 }

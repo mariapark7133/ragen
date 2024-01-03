@@ -1,4 +1,7 @@
 spring:
+  session:
+    store-type: redis
+    login-session-timeout: 86400  # 60 * 60 * 24 sec (=24 hour)
   server:
     port: 8080
   batch:
@@ -40,6 +43,19 @@ server:
     port: 8443
     plusfriendid: '@ndu07j6hnzk3nu2'
     apikey: bb4d2be9-0ebb-4510-a909-96c01dd7aecd
+  humax:
+    url: https://opapi.turucharger.com
+  brightpattern:
+    url: https://turuchargerbpcc.hmncc.com
+    tenant_url: turuchargerbpcc.hmncc.com
+    login: drmadmin
+    password: password1
+  redis:
+    host: 172.16.0.33
+    port: 6379
+    channel: redisroom
+  electron-dist:
+    location: C:/smartUpload/electron-dist
 
 mail:
   account: itfacttest@itfact.co.kr

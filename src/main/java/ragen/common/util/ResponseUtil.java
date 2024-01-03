@@ -1,55 +1,26 @@
 package ragen.common.util;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
+import org.springframework.stereotype.Component;
 import ragen.common.response.dto.ResponseDTO;
 import ragen.common.response.enums.ResponseCode;
 import ragen.common.response.enums.ResponseStatus;
 
+import java.util.Locale;
+
+@Component
 public class ResponseUtil {
-	public static <T> ResponseDTO<T> SUCCESS(ResponseCode responseCode, T data) {
-		return new ResponseDTO<>(ResponseStatus.SUCCESS, responseCode.getMessage(),responseCode.getCode(), data);
+
+	public static <T> ResponseDTO<T> SUCCESS(String messageCode, T data) {
+		return new ResponseDTO<>(ResponseStatus.SUCCESS, MessageUtils.getMessage(messageCode),ResponseCode.SUCCESS_CODE.getCode(), data);
 	}
-	public static <T> ResponseDTO<T> SUCCESS(ResponseCode responseCode) {
-		return new ResponseDTO<>(ResponseStatus.SUCCESS, responseCode.getMessage(),responseCode.getCode(), null);
+	public static <T> ResponseDTO<T> FAIL(String messageCode, T data) {
+		return new ResponseDTO<>(ResponseStatus.FAIL, MessageUtils.getMessage(messageCode),ResponseCode.FAIL_CODE.getCode(), data);
 	}
 
-	public static <T> ResponseDTO<T> SUCCESS(String message, T data) {
-		return new ResponseDTO<>(ResponseStatus.SUCCESS, message,null ,data);
-	}
-
-	public static <T> ResponseDTO<T> SUCCESS(String message) {
-		return new ResponseDTO<>(ResponseStatus.SUCCESS, message,null, null);
-	}
-
-	public static <T> ResponseDTO<T> FAIL(ResponseCode responseCode) {
-		return new ResponseDTO<>(ResponseStatus.FAIL, responseCode.getMessage(),responseCode.getCode(), null);
-	}
-
-	public static <T> ResponseDTO<T> FAIL(ResponseCode responseCode, T data) {
-		return new ResponseDTO<>(ResponseStatus.FAIL, responseCode.getMessage(),responseCode.getCode(), data);
-	}
-
-	public static <T> ResponseDTO<T> FAIL(String message, T data) {
-		return new ResponseDTO<>(ResponseStatus.FAIL, message,null, data);
-	}
-
-	public static <T> ResponseDTO<T> FAIL(String message) {
-		return new ResponseDTO<>(ResponseStatus.FAIL, message,null, null);
-	}
-
-	public static <T> ResponseDTO<T> ERROR(ResponseCode responseCode) {
-		return new ResponseDTO<>(ResponseStatus.ERROR, responseCode.getMessage(),responseCode.getCode(), null);
-	}
-
-	public static <T> ResponseDTO<T> ERROR(ResponseCode responseCode, T data) {
-		return new ResponseDTO<>(ResponseStatus.ERROR, responseCode.getMessage(),responseCode.getCode(), data);
-	}
-
-	public static <T> ResponseDTO<T> ERROR(String message, T data) {
-		return new ResponseDTO<>(ResponseStatus.ERROR, message,null, data);
-	}
-
-	public static <T> ResponseDTO<T> ERROR(String message) {
-		return new ResponseDTO<>(ResponseStatus.ERROR, message,null, null);
+	public static <T> ResponseDTO<T> ERROR(String messageCode, T data) {
+		return new ResponseDTO<>(ResponseStatus.ERROR, MessageUtils.getMessage(messageCode),ResponseCode.ERROR_CODE.getCode(), data);
 	}
 
 }

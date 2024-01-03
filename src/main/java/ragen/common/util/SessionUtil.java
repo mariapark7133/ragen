@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import ragen.common.response.enums.ResponseCode;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.http.MediaType;
+import ragen.common.response.enums.ResponseStatus;
 
 import java.io.PrintWriter;
 import java.util.UUID;
@@ -23,9 +24,9 @@ public class SessionUtil {
 
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectNode jsonResponse = objectMapper.createObjectNode();
-        jsonResponse.put("status", ResponseCode.SESSION_END.name());
-        jsonResponse.put("code", ResponseCode.SESSION_END.getCode());
-        jsonResponse.put("message", ResponseCode.SESSION_END.getMessage());
+        jsonResponse.put("status", ResponseStatus.SESSION_END.name());
+        jsonResponse.put("code", ResponseCode.FAIL_CODE.getCode());
+        jsonResponse.put("messages", MessageUtils.getMessage("SESSION.END"));
         PrintWriter writer = response.getWriter();
         writer.print(jsonResponse);
         writer.flush();

@@ -3,22 +3,19 @@ package ragen.example.controller;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ragen.common.base.controller.BaseController;
+import ragen.common.datasSource.config.MessageConfig;
 import ragen.common.response.dto.ResponseDTO;
 import ragen.common.response.enums.ResponseCode;
 import ragen.common.util.ResponseUtil;
 import ragen.example.dto.ExampleDTO;
-import ragen.example.dto.QueryReqDTO;
-import ragen.example.dto.QueryResDTO;
 import ragen.example.service.ExampleService;
 
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 
 @Slf4j
@@ -39,7 +36,7 @@ public class ExampleController extends BaseController {
 
         resultMap.put("exampleList",resultList);
 
-        return ResponseUtil.SUCCESS(ResponseCode.SUCCESS_SEARCH,resultMap);
+        return ResponseUtil.SUCCESS("SUCCESS.SEARCH",resultMap);
     }
 
     @RequestMapping("/getQueryList")
@@ -50,6 +47,12 @@ public class ExampleController extends BaseController {
 
         resMap.put("queryList",resultMap);
 
-        return ResponseUtil.SUCCESS(ResponseCode.SUCCESS_SEARCH,resMap);
+        return ResponseUtil.SUCCESS("SUCCESS.SEARCH",resMap);
+    }
+
+
+    @RequestMapping("/message")
+    public ResponseDTO message() {
+        return ResponseUtil.SUCCESS("SUCCESS.SEARCH","데이터입니다.");
     }
 }
