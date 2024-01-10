@@ -19,35 +19,35 @@ public class HttpInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 
-        HttpSession session = request.getSession(false);
-        if (session == null || session.getAttribute(SessionConst.TOKEN) == null) {
-            SessionUtil.reponseBody(response);
-            return false;
-        }
-
-        String sessionToken = (String) session.getAttribute(SessionConst.TOKEN);
-        String headToken = request.getHeader(SessionConst.TOKEN);
-
-        if (!StringUtils.equals(sessionToken, headToken)) {
-            SessionUtil.reponseBody(response);
-
-            if (session != null) {
-                session.invalidate();
-            }
-
-            return false;
-        }
-
-        LoginUser loginUser = new LoginUser(
-                (String) session.getAttribute(SessionConst.USRID),
-                (String) session.getAttribute(SessionConst.AUTHCD),
-                (String) session.getAttribute(SessionConst.TOKEN),
-                (String) session.getAttribute(SessionConst.CONNIP)
-        );
-
-        request.setAttribute("LoginUser", loginUser);
-
-        return true;
+//        HttpSession session = request.getSession(false);
+//        if (session == null || session.getAttribute(SessionConst.TOKEN) == null) {
+//            SessionUtil.reponseBody(response);
+//            return false;
+//        }
+//
+//        String sessionToken = (String) session.getAttribute(SessionConst.TOKEN);
+//        String headToken = request.getHeader(SessionConst.TOKEN);
+//
+//        if (!StringUtils.equals(sessionToken, headToken)) {
+//            SessionUtil.reponseBody(response);
+//
+//            if (session != null) {
+//                session.invalidate();
+//            }
+//
+//            return false;
+//        }
+//
+//        LoginUser loginUser = new LoginUser(
+//                (String) session.getAttribute(SessionConst.USRID),
+//                (String) session.getAttribute(SessionConst.AUTHCD),
+//                (String) session.getAttribute(SessionConst.TOKEN),
+//                (String) session.getAttribute(SessionConst.CONNIP)
+//        );
+//
+//        request.setAttribute("LoginUser", loginUser);
+//
+       return true;
     }
 
     @Override

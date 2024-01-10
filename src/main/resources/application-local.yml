@@ -36,7 +36,18 @@ spring:
       location: C:/ragenUpload
       max-request-size: 10MB
       max-file-size: 10MB
+  kafka:
+    bootstrap-servers: mariapark.synology.me:9092
+    consumer:
+      group-id: runtime-kafka-registry
+      enable-auto-commit: true
 
+custom:
+    kafka:
+      listeners:
+        listener-1:
+          topic: com.faza.example.custom.listener.property
+          listener-class: MyCustomMessageListener
 server:
   kakao:
     url: https://italk-vir.ibizplus.co.kr:8443/rs/v1/@ndu07j6hnzk3nu2/
