@@ -1,4 +1,4 @@
-package ragen.kafka.listener;
+package ragen.common.kafka.listener;
 
 import lombok.SneakyThrows;
 import org.springframework.beans.factory.BeanFactory;
@@ -7,8 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.config.KafkaListenerContainerFactory;
 import org.springframework.kafka.config.KafkaListenerEndpointRegistry;
 import org.springframework.stereotype.Component;
-import ragen.kafka.configuration.CustomKafkaListenerProperties;
-import ragen.kafka.model.CustomKafkaListenerProperty;
+import ragen.common.kafka.configuration.CustomKafkaListenerProperties;
+import ragen.common.kafka.model.CustomKafkaListenerProperty;
 
 @Component
 public class CustomKafkaListenerRegistrar implements InitializingBean {
@@ -45,5 +45,6 @@ public class CustomKafkaListenerRegistrar implements InitializingBean {
         kafkaListenerEndpointRegistry.registerListenerContainer(
                 customMessageListener.createKafkaListenerEndpoint(name, customKafkaListenerProperty.getTopic()),
                 kafkaListenerContainerFactory, startImmediately);
+
     }
 }

@@ -1,4 +1,4 @@
-package ragen.kafka.controller;
+package ragen.common.kafka.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;

@@ -1,4 +1,4 @@
-package ragen.kafka.model;
+package ragen.common.kafka.model;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.Builder;

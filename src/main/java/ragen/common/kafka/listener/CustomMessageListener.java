@@ -1,4 +1,4 @@
-package ragen.kafka.listener;
+package ragen.common.kafka.listener;
 
 
 import org.springframework.beans.factory.annotation.Autowired;

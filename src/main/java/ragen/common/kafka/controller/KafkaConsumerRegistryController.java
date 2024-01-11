@@ -1,4 +1,4 @@
-package ragen.kafka.controller;
+package ragen.common.kafka.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.TopicPartition;
@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
-import ragen.kafka.listener.CustomKafkaListenerRegistrar;
-import ragen.kafka.model.CustomKafkaListenerProperty;
-import ragen.kafka.model.KafkaConsumerAssignmentResponse;
-import ragen.kafka.model.KafkaConsumerResponse;
+import ragen.common.kafka.listener.CustomKafkaListenerRegistrar;
+import ragen.common.kafka.model.CustomKafkaListenerProperty;
+import ragen.common.kafka.model.KafkaConsumerAssignmentResponse;
+import ragen.common.kafka.model.KafkaConsumerResponse;
 
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +41,7 @@ public class KafkaConsumerRegistryController {
                 .collect(Collectors.toList());
     }
 
-    @PostMapping(path = "/create")
+    @PostMapping(path = "/create") //토픽생성 + 리스너활성화
     @ResponseStatus(HttpStatus.CREATED)
     public void createConsumer(@RequestParam String topic, @RequestParam String listenerClass,
                                @RequestParam(required = false) boolean startImmediately) {
@@ -53,7 +53,7 @@ public class KafkaConsumerRegistryController {
                 startImmediately);
     }
 
-    @PostMapping(path = "/activate")
+    @PostMapping(path = "/activate") //활성화
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void activateConsumer(@RequestParam String consumerId) {
         MessageListenerContainer listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer(consumerId);
@@ -67,7 +67,7 @@ public class KafkaConsumerRegistryController {
         }
     }
 
-    @PostMapping(path = "/pause")
+    @PostMapping(path = "/pause") //정지
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void pauseConsumer(@RequestParam String consumerId) {
         MessageListenerContainer listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer(consumerId);
@@ -85,7 +85,7 @@ public class KafkaConsumerRegistryController {
         }
     }
 
-    @PostMapping(path = "/resume")
+    @PostMapping(path = "/resume") //재개
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void resumeConsumer(@RequestParam String consumerId) {
         MessageListenerContainer listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer(consumerId);
@@ -101,7 +101,7 @@ public class KafkaConsumerRegistryController {
         }
     }
 
-    @PostMapping(path = "/deactivate")
+    @PostMapping(path = "/deactivate") //비활성화하다
     @ResponseStatus(HttpStatus.ACCEPTED)
     public void deactivateConsumer(@RequestParam String consumerId) {
         MessageListenerContainer listenerContainer = kafkaListenerEndpointRegistry.getListenerContainer(consumerId);

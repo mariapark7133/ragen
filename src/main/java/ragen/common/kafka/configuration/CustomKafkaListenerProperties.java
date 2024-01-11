@@ -1,8 +1,8 @@
-package ragen.kafka.configuration;
+package ragen.common.kafka.configuration;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import ragen.kafka.model.CustomKafkaListenerProperty;
+import ragen.common.kafka.model.CustomKafkaListenerProperty;
 
 import java.util.Map;
 
